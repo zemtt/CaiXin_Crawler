@@ -71,7 +71,7 @@ class Spider_controller(object):
         self.now_num -= 1
         if self.last_num - self.now_num > self.max_dis:
             self.now_num = self.last_num
-            self.now_date -= 1
+            self.now_date -= 2
         print str(self.now_date) + ' ' + str(self.now_num)
         return self.now_date, self.now_num
 
@@ -89,7 +89,14 @@ class Spider_controller(object):
                 thread.start_new_thread(each.run, ())
         except:
             print 'erro'
-a = Spider_controller()
-a.run()
+
 while 1:
-    pass
+    try:
+        a = Spider_controller()
+        a.run()
+        while 1:
+            pass
+    except KeyboardInterrupt:
+        break
+    else:
+        pass
