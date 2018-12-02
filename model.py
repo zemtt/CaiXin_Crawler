@@ -62,17 +62,23 @@ class Spider_controller(object):
     def __init__(self):
         self.now_date, self.now_num = getLastLink()
         self.now_date = Date(self.now_date)
-        self.spider_num = 10
+        self.last_num = self.now_num
+        self.last_date = self.now_date
+        self.spider_num = 5
+        self.max_dis = 400
 
     def get_info(self):
         self.now_num -= 1
-        print self.now_date, self.now_num
+        if self.last_num - self.now_num > self.max_dis:
+            self.now_num = self.last_num
+            self.now_date -= 1
+        print str(self.now_date) + ' ' + str(self.now_num)
         return self.now_date, self.now_num
 
     def save_link(self, info):
         if str(info[0]) != str(self.now_date):
-            self.now_date = info[0]
-            self.now_num = info[1]
+            self.now_date, self.now_num = info[0], info[1]
+        self.last_date, self.last_num = info[0], info[1]
         with open(LINK_FILE_PATH, 'a+') as f:
             f.write(getUrl(info[0], info[1])+'\n')
 
