@@ -64,8 +64,8 @@ class Spider_controller(object):
         self.now_date = Date(self.now_date)
         self.last_num = self.now_num
         self.last_date = self.now_date
-        self.spider_num = 5
-        self.max_dis = 400
+        self.spider_num = 16
+        self.max_dis = 10000
 
     def get_info(self):
         self.now_num -= 1
