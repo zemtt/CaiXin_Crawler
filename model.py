@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+﻿# -*- coding:utf-8 -*-
 
 import io
 import json
@@ -99,4 +99,4 @@ while 1:
     except KeyboardInterrupt:
         break
     else:
-        pass
+        continue
